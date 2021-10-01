@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Student details</h1>
+
+<div>
+
+	<h3>{{student.name|capfirst}} </h3>
+	<p> {{student.father_name}} </p>
+<!-- These are for those areas where htere is an option to put a value in database-->
+	{% if student.city %}
+	<p> City :{{student.city}}
+	{% endif %}
+
+	{% if student.age %}
+	<p> Age :{{student.age}}
+	{% endif %}
+
+	{% if student.vaccinations.all %}
+	<p> Vaccinations for : </p>
+
+	<ul>
+		{% for vaccination in student.vaccinations.all %}
+			<li>{{vaccination.name}} </li>
+		{% endfor %}
+
+	{% endif %}
+	</ul>
+	
+</div>
+{% endblock %}
